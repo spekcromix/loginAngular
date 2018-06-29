@@ -1,3 +1,27 @@
-<p>
-  authors works!
-</p>
+<!-- <mat-card class="mt-20">
+	<mat-card-title>Author</mat-card-title>
+	<hr>
+	<mat-card-content>
+		<div class="row">
+			<div class="col-4 quote-container" *ngFor="let quote of quotes; let i=index">
+				{{ quote.content}} - <i>{{ quote.author?.name }} -</i>
+				<div class="action-buttons">
+					<button mat-raised-button color="primary" [routerLink]="['/quotes/' + quote.id + '/edit']" *ngIf="isLoggedIn">Edit</button>
+					<button mat-raised-button color="warn" (click)="deleteQuote(quote.id, i)" *ngIf="isLoggedIn">Delete</button>
+				</div>
+			</div>
+		</div>
+	</mat-card-content>
+</mat-card>
+
+<mat-paginator [length]="pageLength"
+              [pageSize]="pageSize"
+              [pageSizeOptions]="[5, 10, 25]"
+              (page)="pageEvent($event)">
+</mat-paginator>
+
+<div class="create-quote-fab" [routerLink]="['/quotes/create']" *ngIf="isLoggedIn">
+	<button mat-fab>
+		<mat-icon>add circle</mat-icon>
+	</button>
+</div> -->

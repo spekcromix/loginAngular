@@ -12,6 +12,10 @@ export class AuthService {
   	return localStorage.getItem('quotesAngularToken') ? true : false;
   }
 
+  getAccessToken(){
+    return JSON.parse(localStorage.getItem('quotesAngularToken')).id;
+  }
+
 
   login(data){
   	const headers = new HttpHeaders({
@@ -22,10 +26,8 @@ export class AuthService {
   }
 
   logout(){
-    let accessToken;
-    if(localStorage.getItem('quotesAngularToken')) {
-      accessToken = JSON.parse(localStorage.getItem('quotesAngularToken')).id;
-    }
+    const accessToken = this.getAccessToken();
+    
     return this.http.post(`${environment.api_url}/api/Users/logout?access_token=${accessToken}`, {})
   }
 

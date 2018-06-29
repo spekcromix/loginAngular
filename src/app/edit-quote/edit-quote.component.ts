@@ -5,6 +5,7 @@ import { DataService } from '../data.service';
 import { environment } from '../../environments/environment';
 import { Router } from '@angular/router';
 import { QuotesComponent } from '../quotes/quotes.component';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-edit-quote',
@@ -20,7 +21,8 @@ export class EditQuoteComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, 
   			  private dataService: DataService,
-  			  private router: Router) {
+  			  private router: Router,
+          private authService: AuthService) {
   	this.route.params.subscribe( data => {
   		console.log(data)
   		this.id = data.id;
@@ -47,7 +49,9 @@ export class EditQuoteComponent implements OnInit {
   		authorId: this.authorId
   	}
 
-  	this.dataService.updateData(`${environment.api_url}/api/quotes/${this.id}`, editData)
+    const accessToken = this.authService.getAccessToken();
+
+  	this.dataService.updateData(`${environment.api_url}/api/quotes/${this.id}?access_token=${accessToken}`, editData)
   		.subscribe( data => {
   			console.log(data)
   			this.router.navigate([QuotesComponent])

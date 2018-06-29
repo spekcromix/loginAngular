@@ -7,6 +7,7 @@
     <button mat-button [matMenuTriggerFor]="auth"><mat-icon>more_vert</mat-icon></button>
     <mat-menu #auth="matMenu">
     	<button mat-menu-item [routerLink]="['/login']" *ngIf="!isLoggedIn">Login</button>
+        <button mat-menu-item [routerLink]="['/register']" *ngIf="!isLoggedIn">Register</button>
     	<button mat-menu-item *ngIf="isLoggedIn" (click)="onLogout()">Logout</button>
     </mat-menu>
   </mat-toolbar-row>

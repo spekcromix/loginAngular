@@ -1,3 +1,34 @@
-<p>
-  create-author works!
-</p>
+<mat-card class="mt-20">
+	<mat-card-title>Create Author</mat-card-title>
+	<hr>
+	<mat-card-content>
+		<div class="row">
+			<mat-form-field class="col-sm-12">
+				<mat-select placeholder="Select Country" name="country" [(ngModel)]="countryId">
+					<mat-option [value]="country.id" *ngFor="let country of countrys">{{ country.name }}</mat-option>
+				</mat-select>
+			</mat-form-field>
+
+			<mat-form-field class="col-sm-12">
+				<textarea matInput placeholder="Enter Population" name="name" [(ngModel)]="name"></textarea>
+			</mat-form-field>
+
+			<button mat-raised-button color="primary" (click)="saveAuthor()">Save Author</button>
+		</div>
+	</mat-card-content>
+</mat-card>
+
+<ngx-charts-bar-vertical
+  [view]="view"
+  [scheme]="colorScheme"
+  [results]="countrys"
+  [gradient]="gradient"
+  [xAxis]="showXAxis"
+  [yAxis]="showYAxis"
+  [legend]="showLegend"
+  [showXAxisLabel]="showXAxisLabel"
+  [showYAxisLabel]="showYAxisLabel"
+  [xAxisLabel]="xAxisLabel"
+  [yAxisLabel]="yAxisLabel"
+  (select)="onSelect($event)">
+</ngx-charts-bar-vertical>

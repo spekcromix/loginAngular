@@ -20,8 +20,9 @@ export class QuotesComponent implements OnInit {
   }
 
   ngOnInit() {
-  	this.dataService.getData(`${environment.api_url}/api/Quotes/?filter[include]=author&filter[limit]=${this.pageSize}`).subscribe(data => {
+  	this.dataService.getData(`${environment.api_url}/api/Quotes?filter[include]=author&filter[limit]=${this.pageSize}`).subscribe(data => {
   		this.quotes = data;
+      console.log(data)
   	})
 
   	this.dataService.getData(`${environment.api_url}/api/Quotes/count`).subscribe(data => {
@@ -34,14 +35,15 @@ export class QuotesComponent implements OnInit {
   	const pageSize = ev.pageSize;
   	const skip = pageIndex * pageSize;
 
-  	this.dataService.getData(`${environment.api_url}/api/Quotes/?filter[include]=author&filter[limit]=${pageSize}&filter[skip]=${skip}`).subscribe(data => {
+  	this.dataService.getData(`${environment.api_url}/api/Quotes?filter[include]=author&filter[limit]=${pageSize}&filter[skip]=${skip}`).subscribe(data => {
   		console.log(data);
   		this.quotes = data;
   	})
   }
 
   deleteQuote(id, index) {
-    this.dataService.deleteData(`${environment.api_url}/api/Quotes/${id}`).subscribe(data => {
+    const accessToken = this.authService.getAccessToken();
+    this.dataService.deleteData(`${environment.api_url}/api/Quotes/${id}?access_token=${accessToken}`).subscribe(data => {
       this.quotes.splice(index, 1)
     })
   }

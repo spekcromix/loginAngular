@@ -1,0 +1,21 @@
+<mat-card class="mt-20">
+	<mat-card-title>Users Register</mat-card-title>
+	<hr>
+	<mat-card-content>
+		<div class="row">
+			<mat-form-field class="col-sm-12">
+				<input type="text" matInput placeholder="Enter username" name="username" [(ngModel)]="username">
+			</mat-form-field>
+
+			<mat-form-field class="col-sm-12">
+				<input type="email" matInput placeholder="Enter email" name="email" [(ngModel)]="email">
+			</mat-form-field>
+
+			<mat-form-field class="col-sm-12">
+				<input type="password" matInput placeholder="Enter password" name="password" [(ngModel)]="password">
+			</mat-form-field>
+
+			<button mat-raised-button color="primary" (click)="saveUser()">Register</button>
+		</div>
+	</mat-card-content>
+</mat-card>

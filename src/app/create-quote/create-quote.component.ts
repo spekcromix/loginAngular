@@ -9,6 +9,8 @@ import { Router } from '@angular/router';
 
 import { QuotesComponent } from '../quotes/quotes.component';
 
+import { AuthService } from '../auth.service';
+
 @Component({
   selector: 'app-create-quote',
   templateUrl: './create-quote.component.html',
@@ -22,7 +24,8 @@ export class CreateQuoteComponent implements OnInit {
 
   constructor(private dataService: DataService, 
   			  public snackBar: MatSnackBar,
-  			  private router: Router) { }
+  			  private router: Router,
+          private authService: AuthService) { }
 
   ngOnInit() {
   	this.dataService.getData(`${environment.api_url}/api/authors`)
@@ -38,7 +41,9 @@ export class CreateQuoteComponent implements OnInit {
   		authorId: this.authorId
   	}
 
-  	this.dataService.postData(`${environment.api_url}/api/quotes`, postData)
+    const accessToken = this.authService.getAccessToken();
+
+  	this.dataService.postData(`${environment.api_url}/api/quotes?access_token=${accessToken}`, postData)
   		.subscribe( data => {
   			console.log(data)
   			this.snackBar.open('Quote created successfully ', 'close')
