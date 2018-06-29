@@ -42,5 +42,9 @@
   "Author": {
     "dataSource": "db",
     "public": true
+  },
+  "Country": {
+    "dataSource": "db",
+    "public": true
   }
 }
