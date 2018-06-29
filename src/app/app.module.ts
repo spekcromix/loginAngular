@@ -1,9 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { BarHorizontalPage } from './bar-horizontal';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
-
-//import {FlexLayoutModule  } from '@angular/flex-layout';
 
 import { HttpClientModule } from '@angular/common/http';
 
@@ -50,11 +47,10 @@ import { RegisterComponent } from './register/register.component';
     BrowserModule,
     AppRoutingModule,
     MaterialModule,
-    //FlexLayoutModule,
     BrowserAnimationsModule,
     HttpClientModule,
     FormsModule,
-    NgxChartsModule,
+    NgxChartsModule
   ],
   providers: [DataService, AuthService, AuthGuard],
   bootstrap: [AppComponent]

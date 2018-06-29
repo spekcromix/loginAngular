@@ -2,7 +2,7 @@ import { Component, OnInit, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 
-//import { countrys } from '../countrys';
+import { countrys } from '../countrys';
 
 import { DataService } from '../data.service';
 
@@ -46,11 +46,11 @@ export class CreateAuthorComponent implements OnInit {
   }
 
   ngOnInit() {
-  	this.dataService.getData(`${environment.api_url}/api/Countries`)
-  		.subscribe( data => {
-  			console.log(data)
-  			this.countrys = data;
-  		})
+  	// this.dataService.getData(`${environment.api_url}/api/Countries`)
+  	// 	.subscribe( data => {
+  	// 		console.log(data)
+  	// 		this.countrys = data;
+  	// 	})
   }
 
   saveAuthor(){
